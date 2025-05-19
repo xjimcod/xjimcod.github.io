@@ -154,8 +154,8 @@ markdown_extensions:
   - pymdownx.magiclink:
       normalize_issue_symbols: true
       repo_url_shorthand: true
-      user: squidfunk
-      repo: mkdocs-material
+      user: xjimcod
+      repo: xjimcod.github.io
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.snippets:
@@ -285,15 +285,15 @@ nav:
   - Community:
     - Contributing:
       - contributing/index.md
-      - Reporting a bug: contributing/reporting-a-bug.md
-      - Reporting a docs issue: contributing/reporting-a-docs-issue.md
-      - Requesting a change: contributing/requesting-a-change.md
-      - Adding translations: contributing/adding-translations.md
-      - Making a pull request: contributing/making-a-pull-request.md
-      - Asking a question: https://github.com/squidfunk/mkdocs-material/discussions
-    - Guides:
-      - Creating a reproduction: guides/creating-a-reproduction.md
-    - Community experts program:
-      - insiders/community-experts-program/index.md
+      # - Reporting a bug: contributing/reporting-a-bug.md
+      # - Reporting a docs issue: contributing/reporting-a-docs-issue.md
+      # - Requesting a change: contributing/requesting-a-change.md
+      # - Adding translations: contributing/adding-translations.md
+      # - Making a pull request: contributing/making-a-pull-request.md
+      # - Asking a question: https://github.com/squidfunk/mkdocs-material/discussions
+    # - Guides:
+    #   - Creating a reproduction: guides/creating-a-reproduction.md
+    # - Community experts program:
+    #   - insiders/community-experts-program/index.md
   - Blog:
     - blog/index.md

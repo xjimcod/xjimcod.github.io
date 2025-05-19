@@ -27,8 +27,8 @@ site_description: >-
   minutes – searchable, customizable, in 60+ languages, for all devices
 
 # Repository
-repo_name: squidfunk/mkdocs-material
-repo_url: https://github.com/squidfunk/mkdocs-material
+repo_name: xjimcod/xjimcod.github.io
+repo_url: https://github.com/xjimcod/xjimcod.github.io
 
 # Copyright
 copyright: Copyright &copy; 2025 Jimy Jonathan Llaiqui Ramos
@@ -114,17 +114,17 @@ extra:
     property: !ENV GOOGLE_ANALYTICS_KEY
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/squidfunk
-    - icon: fontawesome/brands/docker
-      link: https://hub.docker.com/r/squidfunk/mkdocs-material/
-    - icon: fontawesome/brands/python
-      link: https://pypi.org/project/mkdocs-material/
-    - icon: fontawesome/brands/bluesky
-      link: https://bsky.app/profile/squidfunk.bsky.social
-    - icon: fontawesome/brands/mastodon
-      link: https://fosstodon.org/@squidfunk
-    - icon: fontawesome/brands/x-twitter
-      link: https://x.com/squidfunk
+      link: https://github.com/xjimcod
+    # - icon: fontawesome/brands/docker
+    #   link: https://hub.docker.com/r/squidfunk/mkdocs-material/
+    # - icon: fontawesome/brands/python
+    #   link: https://pypi.org/project/mkdocs-material/
+    # - icon: fontawesome/brands/bluesky
+    #   link: https://bsky.app/profile/squidfunk.bsky.social
+    # - icon: fontawesome/brands/mastodon
+    #   link: https://fosstodon.org/@squidfunk
+    # - icon: fontawesome/brands/x-twitter
+    #   link: https://x.com/squidfunk
 
 # Extensions
 markdown_extensions:

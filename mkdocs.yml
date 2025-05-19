@@ -19,9 +19,9 @@
 # IN THE SOFTWARE.
 
 # Project information
-site_name: Material for MkDocs
+site_name: xJim's Notes
 site_url: https://squidfunk.github.io/mkdocs-material/
-site_author: Martin Donath
+site_author: Jimy Jonathan Llaiqui Ramos
 site_description: >-
   Write your documentation in Markdown and create a professional static site in
   minutes – searchable, customizable, in 60+ languages, for all devices
@@ -31,7 +31,7 @@ repo_name: squidfunk/mkdocs-material
 repo_url: https://github.com/squidfunk/mkdocs-material
 
 # Copyright
-copyright: Copyright &copy; 2016 - 2025 Martin Donath
+copyright: Copyright &copy; 2025 Jimy Jonathan Llaiqui Ramos
 
 # Configuration
 theme:
@@ -66,13 +66,13 @@ theme:
     - toc.follow
     # - toc.integrate
   palette:
-    - media: "(prefers-color-scheme)"
-      toggle:
-        icon: material/link
-        name: Switch to light mode
+    # - media: "(prefers-color-scheme)"
+      # toggle:
+        # icon: material/link
+        # name: Switch to light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
+      primary: black
       accent: indigo
       toggle:
         icon: material/toggle-switch

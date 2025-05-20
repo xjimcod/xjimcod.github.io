@@ -24,7 +24,7 @@ site_url: https://github.com/xjimcod/xjimcod.github.io
 site_author: Jimy Jonathan Llaiqui Ramos
 site_description: >-
   My technical documentation of courses, bootcamps, and guides 
-  I took to improve my skills to become Azure Cybersecurity Engineer
+  I took to improve my skills
 
 # Repository
 repo_name: xjimcod/xjimcod.github.io
@@ -182,6 +182,8 @@ not_in_nav: |
 # Page tree
 nav:
   - Home: index.md
+  - Frameworks: 
+    - ISO 27001: frameworks/iso-27001.md
   - Getting started:
     - Installation: getting-started.md
     - Creating your site: creating-your-site.md

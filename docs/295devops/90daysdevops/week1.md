@@ -16,6 +16,8 @@
   5. 💬 Compartí tus avances
 
 # Day 2 Homework
+## Summary
+
 
 # Day 3 Homework
 ## Summary

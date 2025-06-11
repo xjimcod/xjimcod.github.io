@@ -184,7 +184,8 @@ nav:
   - Home: index.md
   - Frameworks: 
     - frameworks/index.md
-    - ISO 27001: frameworks/iso-27001.md
+    # - ISO 27001: frameworks/iso-27001.md
+    - CIS Control: frameworks/cis-control.md
   - Getting started:
     - Installation: getting-started.md
     - Creating your site: creating-your-site.md

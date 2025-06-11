@@ -186,6 +186,10 @@ nav:
     - frameworks/index.md
     # - ISO 27001: frameworks/iso-27001.md
     - CIS Control: frameworks/cis-control.md
+  - 295devops:
+    - "90daysdevops": 
+      - 295devops/90daysdevops/week1.md
+
   - Getting started:
     - Installation: getting-started.md
     - Creating your site: creating-your-site.md

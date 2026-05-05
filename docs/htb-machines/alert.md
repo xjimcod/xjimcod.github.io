@@ -1,5 +1,8 @@
 # Alert
 
+
+## Enumeration
+
 ???+ Note "Enumeration"
 
     === ":octicons-codespaces-16: Port Scanning"
@@ -59,29 +62,102 @@
 
             We obtain the services *ssh* (port 22) and **http** (port 80) running, we can proceed analizing the http service on a browser.
 
+## Fuzzing Web
 
 ???+ Example "Fuzzing Web"
 
     === ":octicons-browser-16: Look for directories"
 
+        Looking for directories that may be present
+
         ``` bash
-        ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt:FUZZ -u "http://alert.htb/FUZZ" -ic
+        ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt:FUZZ \
+            -u "http://alert.htb/FUZZ" \
+            -ic
         ``` 
+
+        Result 
+
+        ``` bash
+        css
+        uploads
+        messages
+        server-status
+        ```
+
+        !!! Info
+
+            No one of this shows something interesting.
     
     === ":octicons-browser-16: Look for php files"
 
+        We already see that the webpage is working with **Apache httpd 2.4.41** so we can look for **php** files
+
         ``` bash
-        ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt:FUZZ -u "http://alert.htb/FUZZ" -ic -e .php
+        ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt:FUZZ \
+            -u "http://alert.htb/FUZZ" \
+            -ic -e .php
         ```
+
+        Result
+
+        ``` bash
+        css
+        contact.php
+        uploads
+        index.php
+        messages
+        messages.php
+        server-status
+        ```
+
+        !!! Info
+
+            No one of this shows something interesting.
 
     === ":octicons-browser-16: Look for subdomains"
 
-        ``` bash
-        ffuf -w /usr/share/wordlists/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt:FUZZ -H "http://FUZZ.alert.htb/" -u http://alert.htb
-        ```
-    === ":octicons-browser-16: Look for subdomains filtering"
+        Now we can look for subdomains, for that we can use the following command.
 
         ``` bash
-        ffuf -w /usr/share/wordlists/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt:FUZZ -H "http://FUZZ.alert.htb/" -u http://alert.htb -fw 20
+        ffuf -w /usr/share/wordlists/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt:FUZZ \
+            -H "http://FUZZ.alert.htb/" \
+            -u http://alert.htb
         ```
+
+        Result
+
+        ``` bash
+        mail
+        bbs
+        ns2
+        webmail
+        ns
+        ...
+        ```
+
+        !!! Info
+
+            There are many information, we need to filter it!
+
+    === ":octicons-browser-16: Look for subdomains filtering"
+
+        We obatined so many results, so we can filter based on the number of words.
+
+        ``` bash
+        ffuf -w /usr/share/wordlists/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt:FUZZ \
+            -H "http://FUZZ.alert.htb/" \
+            -u http://alert.htb \
+            -fw 20
+        ```
+
+        Result
+        
+        ``` bash
+        statistics
+        ```
+
+        !!! Info
+
+            This subdomain "http://statistics.alert.htb" requires credentials for access it.
 

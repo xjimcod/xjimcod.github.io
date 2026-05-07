@@ -362,6 +362,19 @@
         $apr1$bMoRBJOg$igG8WBtQ1xYDTQdLjSWZQ/:manchesterunited
         ```
 
+        !!! Success
+
+            So we obtained a user and his password
+
+            ``` bash
+                User: Albert
+                Password: manchesterunited
+            ```
+
+            We can try this credentials on `http://statistics.alert.htb`, but since we see *ssh* running on this machine, we can try use this credentials here too, and we will see that it works.
+
+
+
 
 
 

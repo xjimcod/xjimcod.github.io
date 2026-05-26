@@ -188,7 +188,15 @@ nav:
   #   - CIS Control: frameworks/cis-control.md
   - HackTheBox:
     - "Alert": htb-machines/alert.md
-
+    - "Antique": htb-machines/antique.md
+    - "Bashed": htb-machines/bashed.md
+    - "Calamity": htb-machines/calamity.md
+  - Hack4u.io:
+    - "ArchLinux": hack4u/archlinux.md
+    - "Reconocimiento": hack4u/reconocimiento.md
+    - "Configuración de laboratorios locales en docker": hack4u/docker.md
+    - "Enumeración de servicios comunes y gestores de contenido": hack4u/enumeracion.md
+    - "Conceptos básicos de enumeración  y explotación": hack4u/explotacion.md
   # - Getting started:
   #   - Installation: getting-started.md
   #   - Creating your site: creating-your-site.md

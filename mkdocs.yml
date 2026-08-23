@@ -186,21 +186,61 @@ nav:
   #   - frameworks/index.md
   #   - ISO 27001: frameworks/iso-27001.md
   #   - CIS Control: frameworks/cis-control.md
-  - HackTheBox:
-    - "Alert": htb-machines/alert.md
-    - "Antique": htb-machines/antique.md
-    - "Bashed": htb-machines/bashed.md
-    - "Calamity": htb-machines/calamity.md
-  - Hack4u.io:
-    - "ArchLinux": hack4u/archlinux.md
-    - "Introducción al Hacking":
-        - "1. Reconocimiento": hack4u/intro-to-hack/reconocimiento.md
-        - "2. Configuración de laboratorios locales en docker": hack4u/intro-to-hack/docker.md
-        - "3. Enumeración de servicios comunes y gestores de contenido": hack4u/intro-to-hack/enumeracion.md
-        - "4. Conceptos básicos de enumeración  y explotación": hack4u/intro-to-hack/explotacion.md
-        - "5. OWASP TOP 10 y vulnerabilidades web": hack4u/intro-to-hack/web.md
-        - "6. Técnicas de escalada de privilegios": hack4u/intro-to-hack/privesc.md
-        - "7. Buffer overflow": hack4u/intro-to-hack/boverflow.md
+#  - HackTheBox:
+#    - "Alert": htb-machines/alert.md
+#    - "Antique": htb-machines/antique.md
+#    - "Bashed": htb-machines/bashed.md
+#    - "Calamity": htb-machines/calamity.md
+#    - "Blocky": htb-machines/blocky.md
+#    - "Boardlight": htb-machines/boardlight.md
+#  - Hack4u.io:
+#    - "ArchLinux": hack4u/archlinux.md
+#    - "Introducción al Hacking":
+#      - "1. Reconocimiento": hack4u/intro-to-hack/reconocimiento.md
+#      - "2. Configuración de laboratorios locales en docker": hack4u/intro-to-hack/docker.md
+#      - "3. Enumeración de servicios comunes y gestores de contenido": hack4u/intro-to-hack/enumeracion.md
+#      - "4. Conceptos básicos de enumeración  y explotación": hack4u/intro-to-hack/explotacion.md
+#      - "5. OWASP TOP 10 y vulnerabilidades web": hack4u/intro-to-hack/web.md
+#      - "6. Técnicas de escalada de privilegios": hack4u/intro-to-hack/privesc.md
+#      - "7. Buffer overflow": hack4u/intro-to-hack/boverflow.md
+#  - TryHackMe: 
+#    - "Jr Penetration Tester": 
+#      - "01. Penetration Testing Foundation": tryhackme/jr-pentest/pentest-foundation.md
+#      - "02. Network Reconnaissance": 
+#      - "03. Nmap": 
+#      - "04. Web Application Security Fundamentals": 
+#      - "05. Burp Suite": 
+#      - "06. Web Application Vulnerabilities 1": 
+#      - "07. Web Application Vulnerabilities 2": 
+#      - "08. Vulnerability Knowledge": 
+#      - "09. OWASP Top10 (2025)": 
+#      - "10. Password Attacks": 
+#      - "11. Metasploit and Exploitation": 
+#      - "12. Privilege Escalation": 
+#      - "13. Active Directory Security Testing Basic": 
+#      - "14. Specialized Domains": 
+#      - "15. Python Scripting Basics": 
+#      - "16. Pentesting Methodologies and Reporting": 
+#      - "17. Jr Pentester Challenges": 
+#    - "Web Application Pentesting": 
+#      - "01. Authentication": 
+#      - "02. Injection Attacks": 
+#      - "03. Advanced Server-Side Attacks": 
+#      - "04. HTTP Request Smuggling": 
+#      - "05. Web Frameworks": 
+#    - "Web Application Red Teaming": 
+#      - "01. Cryptographic Failures": 
+#      - "02. Custom Tooling": 
+#      - "03. Chaining Vulnerabilities": 
+#      - "04. Bypassing WAF": 
+#      - "05. Attacking LLMs": 
+#    - "Red Teaming": 
+#      - "01. Red Team Fundamentals": 
+#      - "02. Initial Access": 
+#      - "03. Post Compromise": 
+#      - "04. Host Evasions": 
+#      - "05. Network Security Evasion": 
+#      - "06.Compromising Active Directory ": 
   # - Getting started:
   #   - Installation: getting-started.md
   #   - Creating your site: creating-your-site.md
@@ -310,9 +350,9 @@ nav:
   #     - insiders/changelog/index.md
   #     - How to upgrade: insiders/upgrade.md
 
-  - Community:
-    - Contributing:
-      - contributing/index.md
+#  - Community:
+#    - Contributing:
+#      - contributing/index.md
       # - Reporting a bug: contributing/reporting-a-bug.md
       # - Reporting a docs issue: contributing/reporting-a-docs-issue.md
       # - Requesting a change: contributing/requesting-a-change.md
@@ -323,5 +363,5 @@ nav:
     #   - Creating a reproduction: guides/creating-a-reproduction.md
     # - Community experts program:
     #   - insiders/community-experts-program/index.md
-  - Blog:
-    - blog/index.md
+#  - Blog:
+#    - blog/index.md
